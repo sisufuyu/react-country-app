@@ -1,0 +1,22 @@
+@use '../../styles/global.scss' as *;
+
+.header {
+    height: 100px;
+    @include flex-between;
+    height: $header-height;
+
+    .header-left {
+        @include flex-around;
+        height: 100%;
+        .header-title {
+            margin-right: 20px;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+    }
+
+    .header-right {
+        height: 100%;
+        @include flex-center;
+    }
+}

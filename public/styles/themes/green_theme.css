@@ -1,0 +1,35 @@
+@import '../reset.css';
+
+body {
+    background-color: #FEFCF7 !important;
+}
+
+.header,
+.menu .menu-list  {
+    background-color: #B4CF95 !important;
+    color: #21360B !important;
+}
+
+.header .icon {
+    color: #21360B !important;
+}
+
+.menu-icon-container:hover, .cart-icon-container:hover, .menu-list-item:hover {
+    background-color: #A4AF93 !important;
+}
+
+.active-theme .theme-circle {
+    border: 2px solid #0E2000;
+}
+
+.search-box {
+    background-color: #cbe3af !important;
+}
+
+.search-box .searcg-box-input, .search-box .searcg-box-input::placeholder {
+    color: #57624A;
+}
+
+.cart .cart-number {
+    background-color: #FFDAD6;
+}
