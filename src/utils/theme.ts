@@ -24,12 +24,7 @@ export function removeAllCSS() {
   themeList.forEach((theme) => deleteCSS(`styles/themes/${theme}_theme.css`))
 }
 
-// function assertNever(value: never): never {
-//   throw new Error(`unexpected value: ${JSON.stringify(value)}`)
-// }
-
 export function initGlobalStyle(theme: Theme) {
-  console.log('add theme', theme)
   removeAllCSS()
   addCSS(`styles/themes/${theme}_theme.css`)
 }
