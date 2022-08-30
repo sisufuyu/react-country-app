@@ -1,0 +1,27 @@
+@use '../../styles/global.scss' as *;
+
+.main{
+    margin: 2rem;
+
+    .loading-text {
+        font-size: 1.5rem;
+        font-weight: bold;
+        text-align: center;
+    }
+    .country-table {
+        margin-top: 2rem;
+        width: 100%;
+        border-collapse: collapse;
+
+        td, th {
+            // border: 1px solid #999;
+            padding: 2rem;
+            text-align: left;
+            vertical-align: middle;
+        }
+
+        .country-table-head {
+            font-size: 1.2rem;
+        }
+    }
+}

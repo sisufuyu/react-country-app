@@ -4,10 +4,9 @@ import { faBars } from '@fortawesome/free-solid-svg-icons'
 import { useState } from 'react'
 
 import { useAppDispatch, useAppSelector } from '../../../redux/hooks'
-import { Theme } from '../../../types'
-import { setTheme } from '../../../redux/slices/ui'
-import './Menu.scss'
+import { Theme, setTheme } from '../../../redux/slices/UISlice'
 import { themeList } from '../../../utils/theme'
+import './Menu.scss'
 
 export default function Menu() {
   const [menuOpen, setMenuOpen] = useState(false)
@@ -38,7 +37,7 @@ export default function Menu() {
               onClick={() => handleThemeClick(theme as Theme)}
             >
               <div className="theme-circle"></div>
-              {theme}
+              <span className="theme-text">{theme}</span>
             </li>
           )
         })}

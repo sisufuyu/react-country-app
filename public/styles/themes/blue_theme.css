@@ -1,20 +1,21 @@
-@import '../reset.css';
-
 body {
     background-color: #FEFBFC !important;
 }
 
+/* header style */
 .header,
 .menu .menu-list  {
     background-color: #BED4E9 !important;
     color: #1D3243 !important;
 }
 
-.header .icon {
+.header .icon,
+.header .header-title {
     color: #1D3243 !important;
 }
 
-.menu-icon-container:hover, .cart-icon-container:hover, .menu-list-item:hover {
+.menu-icon-container:hover, 
+.cart-icon-container:hover {
     background-color: #C3C7CC !important;
 }
 
@@ -31,5 +32,24 @@ body {
 }
 
 .cart .cart-number {
-    background-color: #BA1A1A;
+    background-color: #DE3730;
+}
+
+/* main style */
+.main .country-table .country-table-head {
+    color: #767779 !important;
+}
+
+.main .country-table td {
+    color: #292427 !important;
+}
+
+.main .country-table .add-country-btn {
+    background-color: #BED4E9 !important;
+    color: #1D3243 !important;
+}
+
+.main .country-table .add-country-btn:disabled {
+    background-color: #E4E2E2 !important;
+    color: #AAABAE !important;
 }

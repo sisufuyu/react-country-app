@@ -1,5 +1,3 @@
-@import '../reset.css';
-
 body {
     background-color: #FFFBFF !important;
 }
@@ -10,11 +8,13 @@ body {
     color: #ffffff !important;
 }
 
-.header .icon {
+.header .icon,
+.header .header-title {
     color: #ffffff !important;
 }
 
-.menu-icon-container:hover, .cart-icon-container:hover, .menu-list-item:hover {
+.menu-icon-container:hover, 
+.cart-icon-container:hover {
     background-color: #765755 !important;
 }
 
@@ -32,4 +32,23 @@ body {
 
 .cart .cart-number {
     background-color: #22323f;
+}
+
+/* main style */
+.main .country-table .country-table-head {
+    color: #847372 !important;
+}
+
+.main .country-table td {
+    color: #201A1A !important;
+}
+
+.main .country-table .add-country-btn {
+    background-color: #9A4243 !important;
+    color: #ffffff !important;
+}
+
+.main .country-table .add-country-btn:disabled {
+    background-color: #EDE0DF !important;
+    color: #B4A9A8 !important;
 }

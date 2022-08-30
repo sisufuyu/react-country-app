@@ -4,12 +4,13 @@
     height: 100px;
     @include flex-between;
     height: $header-height;
+    @include background-transition;
 
     .header-left {
         @include flex-around;
         height: 100%;
         .header-title {
-            margin-right: 20px;
+            margin-right: 1rem;
             font-size: 1.5rem;
             font-weight: bold;
         }

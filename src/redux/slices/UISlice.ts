@@ -1,7 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
 
-import { Theme } from '../../types'
+export enum Theme {
+  Purple = 'purple',
+  Blue = 'blue',
+  Green = 'green',
+  Red = 'red',
+}
 
 export interface UIState {
   defaultTheme: Theme

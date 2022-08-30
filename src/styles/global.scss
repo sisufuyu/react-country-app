@@ -1,3 +1,5 @@
+@use './reset.scss' as *;
+
 $header-height: 64px;
 
 @mixin flex-center {
@@ -24,6 +26,18 @@ $header-height: 64px;
     align-items: center;
 }
 
+@mixin background-transition {
+    transition: background-color linear .5s;
+}
+
+@mixin menu-transition {
+    transition: background-color linear .5s, transform ease-out .5s;
+}
+
+body {
+    min-width: 912px;
+}
+
 .icon {
-    font-size: 1.2rem;
+    font-size: 1.5rem;
 }

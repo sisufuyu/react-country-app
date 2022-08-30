@@ -1,6 +1,4 @@
-import { Theme } from '../types'
-
-export const themeList = Object.values(Theme)
+export const themeList = ['purple', 'blue', 'green', 'red']
 
 export function addCSS(href: string) {
   const link = document.createElement('link')
@@ -24,7 +22,7 @@ export function removeAllCSS() {
   themeList.forEach((theme) => deleteCSS(`styles/themes/${theme}_theme.css`))
 }
 
-export function initGlobalStyle(theme: Theme) {
+export function initGlobalStyle(theme: string) {
   removeAllCSS()
   addCSS(`styles/themes/${theme}_theme.css`)
 }

@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 import Menu from './Menu'
 import SearchBox from './SearchBox'
@@ -10,7 +11,9 @@ export default function Header() {
     <header className="header">
       <div className="header-left">
         <Menu />
-        <h1 className="header-title">Countries</h1>
+        <Link to="/" className="header-title">
+          Countries
+        </Link>
         <SearchBox />
       </div>
       <div className="header-right">

@@ -1,0 +1,32 @@
+@use '../../../styles/global.scss' as *;
+
+.country-table-row {
+    border-bottom: 1px solid #ccc;
+
+    .country-flag-img {
+        max-height: 50px;
+    }
+
+    .country-name {
+        padding: 2rem 1rem;
+    }
+
+    .country-languages-list {
+
+        .country-languages-item {
+            margin-bottom: .8rem;
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+    }
+
+    .add-country-btn {
+        border: none;
+        border-radius: 5px;
+        padding: .8rem 1.2rem;
+        font-size: 1.2rem;
+        @include background-transition;
+    }
+}
