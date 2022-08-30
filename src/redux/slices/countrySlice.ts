@@ -62,6 +62,10 @@ export const CountrySlice = createSlice({
         state.countryList = action.payload
         state.isLoading = false
       })
+      .addCase(fetchCountryData.rejected, (state) => {
+        state.isLoading = false
+        console.log('fetch data error')
+      })
   },
 })
 

@@ -5,6 +5,7 @@
     border-radius: 5px;
     padding: .5rem 1rem;
     @include background-transition;
+    background-color: var(--primary-container);
 
     .search-icon {
         margin-right: 10px;
@@ -18,5 +19,9 @@
         padding: 0;
         font-size: 1.2rem;
         max-width: 200px;
+        color: var(--on-primary-container);
+        &::placeholder {
+            color: var(--on-primary-container);  
+        }
     }
 }

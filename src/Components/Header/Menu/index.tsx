@@ -5,13 +5,13 @@ import { useState } from 'react'
 
 import { useAppDispatch, useAppSelector } from '../../../redux/hooks'
 import { Theme, setTheme } from '../../../redux/slices/UISlice'
-import { themeList } from '../../../utils/theme'
 import './Menu.scss'
 
 export default function Menu() {
   const [menuOpen, setMenuOpen] = useState(false)
   const dispatch = useAppDispatch()
   const defaultTheme = useAppSelector((state) => state.UI.defaultTheme)
+  const themeList = ['purple', 'blue', 'green', 'red']
 
   const handleThemeClick = (theme: Theme) => {
     dispatch(setTheme(theme))

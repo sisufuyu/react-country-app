@@ -5,6 +5,8 @@
     @include flex-between;
     height: $header-height;
     @include background-transition;
+    background-color: var(--primary);
+    color: var(--on-primary);
 
     .header-left {
         @include flex-around;
@@ -13,6 +15,7 @@
             margin-right: 1rem;
             font-size: 1.5rem;
             font-weight: bold;
+            color: var(--on-primary);
         }
     }
 

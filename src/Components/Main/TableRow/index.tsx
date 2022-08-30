@@ -25,8 +25,12 @@ function formatNumber(num: number) {
 
 function hanldeRowClick(event: React.MouseEvent, name: string) {
   event.stopPropagation()
-
   window.location.href = `/country/${name}`
+}
+
+function handleAddClick(event: React.MouseEvent) {
+  event.stopPropagation()
+  console.log('click add button')
 }
 
 export default function TableRow({ country }: { country: Country }) {
@@ -52,7 +56,11 @@ export default function TableRow({ country }: { country: Country }) {
       <td className="country-population">{formatNumber(country.population)}</td>
       <td className="country-region">{country.region}</td>
       <td>
-        <button type="button" className="add-country-btn">
+        <button
+          type="button"
+          className="add-country-btn"
+          onClick={handleAddClick}
+        >
           ADD
         </button>
       </td>

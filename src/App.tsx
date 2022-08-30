@@ -1,11 +1,10 @@
 import React from 'react'
 import { useEffect } from 'react'
 
-import { initGlobalStyle } from './utils/theme'
 import { useAppDispatch, useAppSelector } from './redux/hooks'
 import { fetchCountryData } from './redux/slices/countrySlice'
-
 import Routes from './Routes'
+import './App.css'
 
 export default function App() {
   const dispatch = useAppDispatch()
@@ -15,13 +14,9 @@ export default function App() {
     dispatch(fetchCountryData())
   }, [])
 
-  useEffect(() => {
-    initGlobalStyle(theme)
-  }, [theme])
-
   return (
-    <>
+    <div className="App" data-theme={theme}>
       <Routes />
-    </>
+    </div>
   )
 }

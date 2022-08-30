@@ -4,11 +4,14 @@
     margin-right: 1rem;
     height: $header-height;
     width: $header-height;
-
+    
     .menu-icon-container {
         width: 100%;
         height: 100%;
         @include flex-center;
+        &:hover {
+            background-color: var(--primary-hover);
+        }
     }
 
     .menu-list {
@@ -21,6 +24,8 @@
         justify-content: space-around;
         transform: translate3d(-100%, 0, 0);
         @include menu-transition;
+        background-color: var(--primary);
+        color: var(--on-primary);
         
         &.active {
             transform: translate3d(0, 0, 0);
@@ -40,6 +45,9 @@
                 margin-left: 1rem;
                 user-select: none;
             }
+        }
+        .active-theme .theme-circle {
+            border: 1px solid var(--primary-outline);
         }
         .purple .theme-circle{
             background-color: #b080aa;
