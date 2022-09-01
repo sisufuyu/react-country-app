@@ -17,30 +17,27 @@ export default function Menu() {
     dispatch(setTheme(theme))
   }
 
-  const toggleMenu = () => {
-    setMenuOpen(!menuOpen)
-  }
-
   return (
     <div className="menu">
-      <div className="menu-icon-container" onClick={toggleMenu}>
+      <div
+        className="menu-icon-container"
+        onClick={() => setMenuOpen(!menuOpen)}
+      >
         <FontAwesomeIcon icon={faBars} className="icon menu-icon" />
       </div>
       <ul className={`menu-list ${menuOpen ? 'active' : ''}`}>
-        {themeList.map((theme) => {
-          return (
-            <li
-              className={`menu-list-item ${theme} ${
-                theme === defaultTheme ? 'active-theme' : ''
-              }`}
-              key={theme}
-              onClick={() => handleThemeClick(theme as Theme)}
-            >
-              <div className="theme-circle"></div>
-              <span className="theme-text">{theme}</span>
-            </li>
-          )
-        })}
+        {themeList.map((theme) => (
+          <li
+            className={`menu-list-item ${theme} ${
+              theme === defaultTheme ? 'active-theme' : ''
+            }`}
+            key={theme}
+            onClick={() => handleThemeClick(theme as Theme)}
+          >
+            <div className="theme-circle"></div>
+            <span className="theme-text">{theme}</span>
+          </li>
+        ))}
       </ul>
     </div>
   )

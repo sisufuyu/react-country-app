@@ -1,0 +1,36 @@
+@use '../../styles/global.scss' as *;
+
+.country-detail-error {
+    margin-top: calc(6rem + $header-height);
+    text-align: center;
+    color: var(--on-background);
+    font-size: 1.2rem;
+}
+
+.country-detail-container {
+    width: 80%;
+    margin: calc(6rem + $header-height) auto 0;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    column-gap: 2rem;
+
+    .country-flag-container {
+        img{
+            width: 100%;
+        }
+    }
+
+    .country-indo-container {
+        .title {
+            color: var(--on-background-title);
+            font-size: 4rem;
+            font-weight: bold;
+            margin-bottom: 2rem;
+        }
+
+        .country-info{
+            font-size: 1.25rem;
+            line-height: 2em;
+        }
+    }
+}

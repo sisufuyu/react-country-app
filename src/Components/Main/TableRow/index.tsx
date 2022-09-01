@@ -1,39 +1,29 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
 
+import { useAppDispatch, useAppSelector } from '../../../redux/hooks'
+import { addCountry } from '../../../redux/slices/countrySlice'
 import { Country } from '../../../redux/slices/countrySlice'
+import { formatNumber } from '../../../utils/country'
 import './TableRow.scss'
 
-function formatNumber(num: number) {
-  if (num <= 1000) {
-    return num
-  }
-
-  let left = num
-  let str = ''
-  let remainder = 0
-
-  while (left > 1000) {
-    remainder = left % 1000
-    str = `,${remainder}${str}`
-    left = Math.floor(left / 1000)
-    if (left <= 1000) {
-      return `${left}${str}`
-    }
-  }
-}
-
-function hanldeRowClick(event: React.MouseEvent, name: string) {
-  event.stopPropagation()
-  window.location.href = `/country/${name}`
-}
-
-function handleAddClick(event: React.MouseEvent) {
-  event.stopPropagation()
-  console.log('click add button')
-}
-
 export default function TableRow({ country }: { country: Country }) {
+  const dispatch = useAppDispatch()
+  const inCart = useAppSelector((state) => state.country.inCart)
+
+  function hanldeRowClick(event: React.MouseEvent, name: string) {
+    event.stopPropagation()
+    window.location.href = `/country/${name}`
+  }
+
+  function handleAddClick(event: React.MouseEvent, name: string) {
+    event.stopPropagation()
+    dispatch(addCountry({ name }))
+  }
+
+  function checkInCart(name: string) {
+    return inCart.find((cart) => cart.name === name) ? true : false
+  }
+
   return (
     <tr
       key={country.name}
@@ -59,7 +49,8 @@ export default function TableRow({ country }: { country: Country }) {
         <button
           type="button"
           className="add-country-btn"
-          onClick={handleAddClick}
+          onClick={(event) => handleAddClick(event, country.name)}
+          disabled={checkInCart(country.name)}
         >
           ADD
         </button>

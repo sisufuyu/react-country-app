@@ -29,7 +29,17 @@ $header-height: 64px;
 }
 
 @mixin menu-transition {
-    transition: background-color linear .3s, transform ease-out .5s;
+    transition: background-color linear .3s, opacity linear .5s, transform ease-out .5s;
+}
+
+@mixin header-list {
+    position: fixed;
+    top: $header-height;
+    bottom: 0;
+    min-height: calc(100vh - $header-height);
+    background-color: var(--primary);
+    color: var(--on-primary);
+    z-index: 99;
 }
 
 body {

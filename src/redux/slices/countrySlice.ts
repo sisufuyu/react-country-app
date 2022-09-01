@@ -1,20 +1,32 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
-// import type { PayloadAction } from '@reduxjs/toolkit'
+import type { PayloadAction } from '@reduxjs/toolkit'
 
 import { fetchCountry } from '../../utils/country'
 
 export interface Country {
+  name: string
+  capital: string
+  region: string
+  population: number
+  timezones: string[]
   flags: {
     png: string
   }
-  name: string
+  currencies: [
+    {
+      name: string
+      symbol: string
+    }
+  ]
   languages: [
     {
       name: string
     }
   ]
-  population: number
-  region: string
+}
+
+interface inCartProps {
+  name: string
 }
 
 export const fetchCountryData = createAsyncThunk(
@@ -28,31 +40,56 @@ export const fetchCountryData = createAsyncThunk(
 export interface CountryState {
   countryList: Country[]
   isLoading: boolean
+  inCart: inCartProps[]
 }
 
 const initialState: CountryState = {
   countryList: [
     {
+      name: '',
+      capital: '',
+      region: '',
+      population: 0,
+      timezones: [''],
       flags: {
         png: '',
       },
-      name: '',
+      currencies: [
+        {
+          name: '',
+          symbol: '',
+        },
+      ],
       languages: [
         {
           name: '',
         },
       ],
-      population: 0,
-      region: '',
     },
   ],
   isLoading: false,
+  inCart: [],
 }
 
 export const CountrySlice = createSlice({
   name: 'country',
   initialState,
-  reducers: {},
+  reducers: {
+    addCountry: (state, action: PayloadAction<inCartProps>) => {
+      const countryExist = state.inCart.find(
+        (c) => c.name === action.payload.name
+      )
+      if (!countryExist) {
+        state.inCart.push(action.payload)
+      }
+    },
+    deleteCountry: (state, action: PayloadAction<string>) => {
+      const index = state.inCart.findIndex((c) => c.name === action.payload)
+      if (index >= 0) {
+        state.inCart.splice(index, 1)
+      }
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchCountryData.pending, (state) => {
@@ -69,4 +106,5 @@ export const CountrySlice = createSlice({
   },
 })
 
+export const { addCountry, deleteCountry } = CountrySlice.actions
 export default CountrySlice.reducer

@@ -1,8 +1,10 @@
 @use '../../../styles/global.scss' as *;
 
 .country-table-row {
+
     td {
         color: var(--on-background);
+        cursor: pointer;
     }
 
     .country-flag-img {

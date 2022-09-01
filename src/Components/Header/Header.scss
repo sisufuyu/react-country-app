@@ -1,12 +1,15 @@
 @use '../../styles/global.scss' as *;
 
 .header {
-    height: 100px;
     @include flex-between;
     height: $header-height;
     @include background-transition;
     background-color: var(--primary);
     color: var(--on-primary);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
 
     .header-left {
         @include flex-around;

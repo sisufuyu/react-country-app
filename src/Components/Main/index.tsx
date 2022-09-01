@@ -8,17 +8,18 @@ import './Main.scss'
 
 export default function Main() {
   const { countryList, isLoading } = useAppSelector((state) => state.country)
+  const tableExist = countryList.length > 1
 
   return (
     <main className="main">
       {isLoading && <h1 className="loading-text">Loading...</h1>}
-      {countryList && (
+      {tableExist && (
         <table className="country-table">
           <thead>
             <tr>
               <th className="country-table-head">Flag</th>
               <th className="country-table-head">
-                Name
+                <span className="thead-text">Name</span>
                 <FontAwesomeIcon
                   icon={faUpLong}
                   className="sort-name-icon-up icon"

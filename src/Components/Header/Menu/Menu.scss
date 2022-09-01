@@ -15,39 +15,43 @@
     }
 
     .menu-list {
-        position: absolute;
-        top: $header-height;
+        @include header-list;
         left: 0;
-        height: calc(100vh - $header-height);
+        bottom: 0;
+        transform: translate3d(-110%, 0, 0);
+        @include menu-transition;
         display: flex;
         flex-direction: column;
         justify-content: space-around;
-        transform: translate3d(-100%, 0, 0);
-        @include menu-transition;
-        background-color: var(--primary);
-        color: var(--on-primary);
+        opacity: 0;
         
         &.active {
             transform: translate3d(0, 0, 0);
+            opacity: 1;
         }
 
         .menu-list-item{
             @include flex-start;
             padding: 20px;
             cursor: pointer;
+
+            &:hover{
+                background-color: var(--primary-container);
+            }
             
             .theme-circle {
                 width: 2rem;
                 height: 2rem;
                 border-radius: 50%;
             }
+            
             .theme-text {
                 margin-left: 1rem;
                 user-select: none;
             }
         }
         .active-theme .theme-circle {
-            border: 1px solid var(--primary-outline);
+            border: 1px solid var(--accent);
         }
         .purple .theme-circle{
             background-color: #b080aa;
