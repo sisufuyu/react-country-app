@@ -1,15 +1,14 @@
 @use '../../styles/global.scss' as *;
 
 .country-detail-error {
-    margin-top: calc(6rem + $header-height);
+    padding: calc(6rem + $header-height) 0 1rem;
     text-align: center;
     color: var(--on-background);
     font-size: 1.2rem;
 }
 
 .country-detail-container {
-    width: 80%;
-    margin: calc(6rem + $header-height) auto 0;
+    padding: calc(6rem + $header-height) 10%;
     display: grid;
     grid-template-columns: 2fr 1fr;
     column-gap: 2rem;
