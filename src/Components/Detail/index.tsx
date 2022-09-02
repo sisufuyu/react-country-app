@@ -54,7 +54,7 @@ export default function Detail({ name }: { name: string }) {
   }
 
   if (!country) {
-    console.log('try fetch again')
+    // console.log('try fetch again')
     dispatch(fetchCountryThunk(name))
       .unwrap()
       .catch(() => {
