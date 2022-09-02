@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
 
-import { fetchCountry } from '../../utils/country'
+import { fetchCountries, fetchCountry } from '../../utils/countryService'
 
 export interface Country {
   name: string
@@ -29,11 +29,20 @@ interface inCartProps {
   name: string
 }
 
-export const fetchCountryData = createAsyncThunk(
-  'country/fetchCountryData',
+export const fetchCountriesThunk = createAsyncThunk(
+  'country/fetchCountries',
   async () => {
-    const res = await fetchCountry()
+    const res = await fetchCountries()
     return res.data
+  }
+)
+
+export const fetchCountryThunk = createAsyncThunk(
+  'country/fetchCountryThunk',
+  async (name: string) => {
+    // console.log('fetch country thunk')
+    const res = await fetchCountry(name)
+    return res.data[0]
   }
 )
 
@@ -41,34 +50,42 @@ export interface CountryState {
   countryList: Country[]
   isLoading: boolean
   inCart: inCartProps[]
+  error: string
+  keyword: string
+  filteredList: Country[]
+  currentCountry: Country | null
 }
 
+// const initialCountry: Country = {
+//   name: '',
+//   capital: '',
+//   region: '',
+//   population: 0,
+//   timezones: [''],
+//   flags: {
+//     png: '',
+//   },
+//   currencies: [
+//     {
+//       name: '',
+//       symbol: '',
+//     },
+//   ],
+//   languages: [
+//     {
+//       name: '',
+//     },
+//   ]
+// }
+
 const initialState: CountryState = {
-  countryList: [
-    {
-      name: '',
-      capital: '',
-      region: '',
-      population: 0,
-      timezones: [''],
-      flags: {
-        png: '',
-      },
-      currencies: [
-        {
-          name: '',
-          symbol: '',
-        },
-      ],
-      languages: [
-        {
-          name: '',
-        },
-      ],
-    },
-  ],
+  countryList: [],
   isLoading: false,
   inCart: [],
+  error: '',
+  keyword: '',
+  filteredList: [],
+  currentCountry: null,
 }
 
 export const CountrySlice = createSlice({
@@ -89,22 +106,34 @@ export const CountrySlice = createSlice({
         state.inCart.splice(index, 1)
       }
     },
+    searchCountries: (state, action: PayloadAction<string>) => {
+      const keyword = action.payload.toLocaleLowerCase()
+      state.keyword = keyword
+      const list = state.countryList.filter(
+        (country) => country.name.toLocaleLowerCase().indexOf(keyword) !== -1
+      )
+      state.filteredList = list
+    },
   },
   extraReducers: (builder) => {
     builder
-      .addCase(fetchCountryData.pending, (state) => {
+      .addCase(fetchCountriesThunk.pending, (state) => {
         state.isLoading = true
       })
-      .addCase(fetchCountryData.fulfilled, (state, action) => {
+      .addCase(fetchCountriesThunk.fulfilled, (state, action) => {
         state.countryList = action.payload
         state.isLoading = false
       })
-      .addCase(fetchCountryData.rejected, (state) => {
+      .addCase(fetchCountriesThunk.rejected, (state) => {
         state.isLoading = false
-        console.log('fetch data error')
+        state.error = 'Something wrong happened, please try again!'
+      })
+      .addCase(fetchCountryThunk.fulfilled, (state, action) => {
+        state.currentCountry = action.payload
       })
   },
 })
 
-export const { addCountry, deleteCountry } = CountrySlice.actions
+export const { addCountry, deleteCountry, searchCountries } =
+  CountrySlice.actions
 export default CountrySlice.reducer

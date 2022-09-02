@@ -1,17 +1,20 @@
 @use '../../styles/global.scss' as *;
 
-.country-detail-error {
-    padding: calc(6rem + $header-height) 0 1rem;
-    text-align: center;
-    color: var(--on-background);
-    font-size: 1.2rem;
-}
-
-.country-detail-container {
+.country-detail {
     padding: calc(6rem + $header-height) 10%;
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    column-gap: 2rem;
+
+    .country-detail-error {
+        text-align: center;
+        color: var(--on-background);
+        font-size: 1.2rem;
+        padding: 2rem 0;
+    }
+
+    .country-detail-container {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      column-gap: 2rem;
+    }
 
     .country-flag-container {
         img{
@@ -19,17 +22,19 @@
         }
     }
 
-    .country-indo-container {
+    .country-info-container {
         .title {
             color: var(--on-background-title);
             font-size: 4rem;
             font-weight: bold;
-            margin-bottom: 2rem;
         }
 
         .country-info{
-            font-size: 1.25rem;
-            line-height: 2em;
+            margin: 2rem 0 1rem;
+            p {
+                font-size: 1.25rem;
+                line-height: 2em;
+            }
         }
     }
 }

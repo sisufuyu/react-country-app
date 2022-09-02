@@ -1,0 +1,16 @@
+@use '../../styles/global.scss' as *;
+
+.add-country-btn {
+    border: none;
+    border-radius: 5px;
+    padding: .8rem 1.2rem;
+    font-size: 1.2rem;
+    @include background-transition;
+    background-color: var(--primary);
+    color: var(--on-primary);
+
+    &:disabled {
+        background-color: var(--disabled-background);
+        color: var(--disabled-text);
+    }
+}

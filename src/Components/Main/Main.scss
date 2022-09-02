@@ -2,11 +2,13 @@
 
 .main{
     padding: calc(2rem + $header-height) 2rem 2rem;
+    background-color: var(--background);
 
     .loading-text {
         font-size: 1.5rem;
         font-weight: bold;
         text-align: center;
+        color: var(--on-background);
     }
 
     .country-table {
