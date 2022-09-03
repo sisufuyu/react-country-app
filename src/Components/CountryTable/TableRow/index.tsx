@@ -2,9 +2,8 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 import { Country } from '../../../redux/slices/countrySlice'
-import { formatNumber } from '../../../utils/countryService'
+import { formatNumber } from '../../../utils/ui'
 import AddCountryButton from '../../AddCountryButton'
-import './TableRow.scss'
 
 export default function TableRow({ country }: { country: Country }) {
   const { name, region, population, languages, flags } = country

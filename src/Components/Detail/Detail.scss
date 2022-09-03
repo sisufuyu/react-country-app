@@ -2,6 +2,7 @@
 
 .country-detail {
     padding: calc(6rem + $header-height) 10%;
+    background-color: var(--background);
 
     .country-detail-error {
         text-align: center;

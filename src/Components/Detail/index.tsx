@@ -2,11 +2,7 @@ import React, { useState } from 'react'
 
 import { useAppSelector, useAppDispatch } from '../../redux/hooks'
 import { Country, fetchCountryThunk } from '../../redux/slices/countrySlice'
-import {
-  formatNumber,
-  concatLangs,
-  concatCurrencies,
-} from '../../utils/countryService'
+import { formatNumber, concatLangs, concatCurrencies } from '../../utils/ui'
 import AddCountryButton from '../AddCountryButton'
 import './Detail.scss'
 

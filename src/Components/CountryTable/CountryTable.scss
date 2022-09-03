@@ -1,0 +1,110 @@
+@use '../../styles/global.scss' as *;
+
+.country-table {
+    margin-top: 2rem;
+    width: 100%;
+
+    tr {
+        border-bottom: 1px solid #ccc;
+    }
+
+    td, th {
+        text-align: left;
+        vertical-align: middle;
+    }
+
+    td {
+        padding: 1.5rem 1rem;
+        position: relative;
+        .row-link {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+        }
+    }
+
+    .country-table-head {
+        padding: 1rem;
+        font-size: 1em;
+        color: var(--on-background-secondary);
+        cursor: pointer;
+        .thead-text {
+            margin-right: .4rem;
+        }
+    }
+}
+
+.table-head-name, .table-head-population {
+    position: relative;
+    .order-list {
+        position: absolute;
+        top: calc(100% + 10px);
+        left: 0;
+        z-index: 99;
+        padding: .5rem 0;
+        background-color: #fff;
+        box-shadow: var(--background-shadow);
+        &::after {
+            content: "";
+            width: 0;
+            height: 0;
+            border: 10px solid transparent;
+            border-bottom: 20px solid #fff;
+            position: absolute;
+            top: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 99;
+        }
+        &.hide {
+            display: none;
+        }
+
+        .order-text {
+            font-size: .6rem;
+            cursor: default;
+        }
+        .order-list-item {
+            text-align: left;
+            &:hover {
+                color: var(--primary);
+            }
+        }
+    }
+}
+
+.table-head-name .order-list{
+    .order-text, .order-list-item {
+        padding: .5rem 2rem;
+    }
+}
+
+.table-head-population .order-list{
+    min-width: 150px;
+    .order-text, .order-list-item {
+        padding: .5rem 1rem;
+    }
+}
+
+.country-table-row {
+    &:hover {
+        background-color: var(--surface);
+    }
+
+    .country-flag-img {
+        max-height: 50px;
+    }
+
+    .country-languages-list {
+        .country-languages-item {
+            color: var(--on-background);
+            margin-bottom: .8rem;
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+    }
+}
