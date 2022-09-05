@@ -8,10 +8,10 @@ export default function Main() {
   const { isLoading, error } = useAppSelector((state) => state.country)
 
   return (
-    <main className="main">
+    <div className="main">
       {error && <p className="error">{error}</p>}
       {isLoading && <h1 className="loading-text">Loading...</h1>}
       <CountryTable />
-    </main>
+    </div>
   )
 }

@@ -9,13 +9,17 @@ export default function TableHeadPopulation() {
   const [listOpen, setListOpen] = useState(false)
   const dispatch = useAppDispatch()
 
+  function ToggleList() {
+    setListOpen(!listOpen)
+  }
+
   function handleOrderPopulation(order: string) {
     dispatch(orderCountriesByPopulation(order))
   }
 
   return (
     <th className="country-table-head table-head-population">
-      <div onClick={() => setListOpen(!listOpen)}>
+      <div onClick={ToggleList}>
         <span className="thead-text">Population</span>
         <FontAwesomeIcon
           icon={faCaretDown}

@@ -20,6 +20,7 @@ export function formatNumber(num: number) {
 
 export const concatLangs = (langs: Language[]): string => {
   let str = ''
+  if (!langs || langs.length === 0) return 'None'
   langs.forEach((lang, index) => {
     if (index === 0) {
       str = lang.name
@@ -32,6 +33,7 @@ export const concatLangs = (langs: Language[]): string => {
 
 export const concatCurrencies = (currs: Currency[]): string => {
   let str = ''
+  if (!currs || currs.length === 0) return 'None'
   currs.forEach((curr, index) => {
     if (index === 0) {
       str = `${curr.name} (${curr.symbol})`

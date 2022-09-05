@@ -9,13 +9,17 @@ export default function TableHeadName() {
   const [listOpen, setListOpen] = useState(false)
   const dispatch = useAppDispatch()
 
+  function ToggleList() {
+    setListOpen(!listOpen)
+  }
+
   function handleOrderName(order: string) {
     dispatch(orderCountriesByName(order))
   }
 
   return (
     <th className="country-table-head table-head-name">
-      <div onClick={() => setListOpen(!listOpen)}>
+      <div onClick={ToggleList}>
         <span className="thead-text">Name</span>
         <FontAwesomeIcon
           icon={faCaretDown}

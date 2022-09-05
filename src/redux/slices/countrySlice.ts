@@ -38,7 +38,7 @@ export const fetchCountriesThunk = createAsyncThunk(
 )
 
 export const fetchCountryThunk = createAsyncThunk(
-  'country/fetchCountryThunk',
+  'country/fetchCountry',
   async (name: string) => {
     // console.log('fetch country thunk')
     const res = await fetchCountry(name)
@@ -97,7 +97,7 @@ export const CountrySlice = createSlice({
         (c) => c.name === action.payload.name
       )
       if (!countryExist) {
-        state.inCart.push(action.payload)
+        state.inCart = [...state.inCart, action.payload]
       }
     },
     deleteCountry: (state, action: PayloadAction<string>) => {

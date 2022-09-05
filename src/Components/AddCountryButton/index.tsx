@@ -8,19 +8,19 @@ export default function AddCountryButton({ name }: { name: string }) {
   const dispatch = useAppDispatch()
   const inCart = useAppSelector((state) => state.country.inCart)
 
-  function handleAddClick(name: string) {
+  function handleAddClick() {
     dispatch(addCountry({ name }))
   }
 
   function checkInCart(name: string) {
-    return inCart.find((cart) => cart.name === name) ? true : false
+    return inCart.some((cart) => cart.name === name)
   }
 
   return (
     <button
       type="button"
       className="add-country-btn"
-      onClick={() => handleAddClick(name)}
+      onClick={handleAddClick}
       disabled={checkInCart(name)}
     >
       ADD
