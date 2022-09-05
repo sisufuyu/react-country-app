@@ -116,28 +116,38 @@ export const CountrySlice = createSlice({
     },
     orderCountriesByName: (state, action: PayloadAction<string>) => {
       const order = action.payload
+      let list: Country[]
+      if (state.keyword) list = [...state.filteredList]
+      else list = [...state.countryList]
       if (order === 'asc') {
-        state.countryList.sort(function (a, b) {
+        list.sort(function (a, b) {
           return a.name.localeCompare(b.name)
         })
       } else if (order === 'desc') {
-        state.countryList.sort(function (a, b) {
+        list.sort(function (a, b) {
           return a.name.localeCompare(b.name)
         })
-        state.countryList.reverse()
+        list.reverse()
       }
+      if (state.keyword) state.filteredList = list
+      else state.countryList = list
     },
     orderCountriesByPopulation: (state, action: PayloadAction<string>) => {
       const order = action.payload
+      let list: Country[]
+      if (state.keyword) list = [...state.filteredList]
+      else list = [...state.countryList]
       if (order === 'asc') {
-        state.countryList.sort(function (a, b) {
+        list.sort(function (a, b) {
           return a.population - b.population
         })
       } else if (order === 'desc') {
-        state.countryList.sort(function (a, b) {
+        list.sort(function (a, b) {
           return b.population - a.population
         })
       }
+      if (state.keyword) state.filteredList = list
+      else state.countryList = list
     },
   },
   extraReducers: (builder) => {
