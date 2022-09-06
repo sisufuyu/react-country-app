@@ -13,7 +13,8 @@ export interface UIState {
 }
 
 const initialState: UIState = {
-  defaultTheme: Theme.Purple,
+  defaultTheme:
+    (localStorage.getItem('country-app-theme') as Theme) || Theme.Purple,
 }
 
 export const UISlice = createSlice({
@@ -22,6 +23,7 @@ export const UISlice = createSlice({
   reducers: {
     setTheme: (state, action: PayloadAction<Theme>) => {
       state.defaultTheme = action.payload
+      localStorage.setItem('country-app-theme', action.payload)
     },
   },
 })

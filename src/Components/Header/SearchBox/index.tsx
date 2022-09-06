@@ -1,18 +1,23 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
 
-import { useAppDispatch, useAppSelector } from '../../../redux/hooks'
+import { useAppDispatch } from '../../../redux/hooks'
 import { searchCountries } from '../../../redux/slices/countrySlice'
 import './SearchBox.scss'
 
 export default function SearchBox() {
   const dispatch = useAppDispatch()
-  const keyword = useAppSelector((state) => state.country.keyword)
+  const timerID = useRef<NodeJS.Timeout | null>(null)
+
+  const debounce = (callback: () => void, delay: number) => {
+    if (timerID.current) clearTimeout(timerID.current)
+    timerID.current = setTimeout(callback, delay)
+  }
 
   const handleChange = (event: React.FormEvent<HTMLInputElement>) => {
     const target = event.target as HTMLInputElement
-    dispatch(searchCountries(target.value))
+    debounce(() => dispatch(searchCountries(target.value)), 250)
   }
 
   return (
@@ -21,7 +26,6 @@ export default function SearchBox() {
       <input
         type="text"
         placeholder="Search..."
-        value={keyword}
         onChange={handleChange}
         className="search-box-input"
       />

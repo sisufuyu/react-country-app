@@ -2,11 +2,13 @@ import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit'
 
 import UIReducer from './slices/UISlice'
 import countryReducer from './slices/countrySlice'
+import cartReducer from './slices/cartSlice'
 
 const store = configureStore({
   reducer: {
     UI: UIReducer,
     country: countryReducer,
+    cart: cartReducer,
   },
 })
 

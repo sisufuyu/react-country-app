@@ -9,15 +9,14 @@ import './CountryTable.scss'
 
 export function CountryTable() {
   const dispatch = useAppDispatch()
-  const { countryList, keyword, filteredList } = useAppSelector(
-    (state) => state.country
-  )
+  const { filteredList } = useAppSelector((state) => state.country)
 
-  const displayList = keyword ? filteredList : countryList
-  const tableExist = displayList.length >= 1
+  const tableExist = filteredList.length >= 1
 
   useEffect(() => {
-    dispatch(fetchCountriesThunk())
+    if (!tableExist) {
+      dispatch(fetchCountriesThunk())
+    }
   }, [])
 
   return (
@@ -34,7 +33,7 @@ export function CountryTable() {
       </thead>
       {tableExist && (
         <tbody>
-          {displayList.map((country) => (
+          {filteredList.map((country) => (
             <TableRow country={country} key={country.name} />
           ))}
         </tbody>

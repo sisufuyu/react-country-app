@@ -25,10 +25,6 @@ export interface Country {
   ]
 }
 
-interface inCartProps {
-  name: string
-}
-
 export const fetchCountriesThunk = createAsyncThunk(
   'country/fetchCountries',
   async () => {
@@ -40,7 +36,6 @@ export const fetchCountriesThunk = createAsyncThunk(
 export const fetchCountryThunk = createAsyncThunk(
   'country/fetchCountry',
   async (name: string) => {
-    // console.log('fetch country thunk')
     const res = await fetchCountry(name)
     return res.data[0]
   }
@@ -49,66 +44,25 @@ export const fetchCountryThunk = createAsyncThunk(
 export interface CountryState {
   countryList: Country[]
   isLoading: boolean
-  inCart: inCartProps[]
   error: string
-  keyword: string
   filteredList: Country[]
   currentCountry: Country | null
 }
 
-// const initialCountry: Country = {
-//   name: '',
-//   capital: '',
-//   region: '',
-//   population: 0,
-//   timezones: [''],
-//   flags: {
-//     png: '',
-//   },
-//   currencies: [
-//     {
-//       name: '',
-//       symbol: '',
-//     },
-//   ],
-//   languages: [
-//     {
-//       name: '',
-//     },
-//   ]
-// }
-
 const initialState: CountryState = {
   countryList: [],
   isLoading: false,
-  inCart: [],
   error: '',
-  keyword: '',
   filteredList: [],
   currentCountry: null,
 }
 
-export const CountrySlice = createSlice({
+export const countrySlice = createSlice({
   name: 'country',
   initialState,
   reducers: {
-    addCountry: (state, action: PayloadAction<inCartProps>) => {
-      const countryExist = state.inCart.find(
-        (c) => c.name === action.payload.name
-      )
-      if (!countryExist) {
-        state.inCart = [...state.inCart, action.payload]
-      }
-    },
-    deleteCountry: (state, action: PayloadAction<string>) => {
-      const index = state.inCart.findIndex((c) => c.name === action.payload)
-      if (index >= 0) {
-        state.inCart.splice(index, 1)
-      }
-    },
     searchCountries: (state, action: PayloadAction<string>) => {
       const keyword = action.payload.toLocaleLowerCase()
-      state.keyword = keyword
       const list = state.countryList.filter(
         (country) => country.name.toLocaleLowerCase().indexOf(keyword) !== -1
       )
@@ -116,9 +70,7 @@ export const CountrySlice = createSlice({
     },
     orderCountriesByName: (state, action: PayloadAction<string>) => {
       const order = action.payload
-      let list: Country[]
-      if (state.keyword) list = [...state.filteredList]
-      else list = [...state.countryList]
+      const list = [...state.filteredList]
       if (order === 'asc') {
         list.sort(function (a, b) {
           return a.name.localeCompare(b.name)
@@ -129,14 +81,11 @@ export const CountrySlice = createSlice({
         })
         list.reverse()
       }
-      if (state.keyword) state.filteredList = list
-      else state.countryList = list
+      state.filteredList = list
     },
     orderCountriesByPopulation: (state, action: PayloadAction<string>) => {
       const order = action.payload
-      let list: Country[]
-      if (state.keyword) list = [...state.filteredList]
-      else list = [...state.countryList]
+      const list = [...state.filteredList]
       if (order === 'asc') {
         list.sort(function (a, b) {
           return a.population - b.population
@@ -146,34 +95,44 @@ export const CountrySlice = createSlice({
           return b.population - a.population
         })
       }
-      if (state.keyword) state.filteredList = list
-      else state.countryList = list
+      state.filteredList = list
     },
   },
   extraReducers: (builder) => {
     builder
       .addCase(fetchCountriesThunk.pending, (state) => {
         state.isLoading = true
+        state.error = ''
       })
       .addCase(fetchCountriesThunk.fulfilled, (state, action) => {
         state.countryList = action.payload
+        state.filteredList = action.payload
         state.isLoading = false
+        state.error = ''
       })
       .addCase(fetchCountriesThunk.rejected, (state) => {
         state.isLoading = false
         state.error = 'Something wrong happened, please try again!'
       })
+      .addCase(fetchCountryThunk.pending, (state) => {
+        state.isLoading = true
+        state.error = ''
+      })
       .addCase(fetchCountryThunk.fulfilled, (state, action) => {
+        state.isLoading = false
         state.currentCountry = action.payload
+        state.error = ''
+      })
+      .addCase(fetchCountryThunk.rejected, (state) => {
+        state.isLoading = false
+        state.error = 'Oops, cannot find the country, please try again!'
       })
   },
 })
 
 export const {
-  addCountry,
-  deleteCountry,
   searchCountries,
   orderCountriesByName,
   orderCountriesByPopulation,
-} = CountrySlice.actions
-export default CountrySlice.reducer
+} = countrySlice.actions
+export default countrySlice.reducer

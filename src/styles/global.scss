@@ -46,8 +46,22 @@ $header-height: 64px;
     font-size: 1.5rem;
 }
 
+.loading-text {
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+    color: var(--on-background);
+}
+
+.error {
+    color: var(--accent);
+    text-align: center;
+    font-size: 1.2em;
+}
+
 @media screen and (max-width: 768px) {
     .icon {
         font-size: 1rem;
     }
 }
+

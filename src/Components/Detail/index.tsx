@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useMemo } from 'react'
 
 import { useAppSelector, useAppDispatch } from '../../redux/hooks'
 import { Country, fetchCountryThunk } from '../../redux/slices/countrySlice'
@@ -12,10 +12,18 @@ export default function Detail({ name }: { name: string }) {
       state.country.countryList.find((c) => c.name === name) ||
       state.country.currentCountry
   )
-  const [error, setError] = useState(false)
+  const { isLoading, error } = useAppSelector((state) => state.country)
   const dispatch = useAppDispatch()
 
+  useEffect(() => {
+    if (!country) {
+      dispatch(fetchCountryThunk(name))
+    }
+  }, [])
+
   function displayCountry(country: Country) {
+    if (!country) return null
+
     const {
       name,
       capital,
@@ -49,23 +57,16 @@ export default function Detail({ name }: { name: string }) {
     )
   }
 
-  if (!country) {
-    // console.log('try fetch again')
-    dispatch(fetchCountryThunk(name))
-      .unwrap()
-      .catch(() => {
-        setError(true)
-      })
-  }
+  const displayCountryMemo = useMemo(
+    () => displayCountry(country as Country),
+    [country]
+  )
 
   return (
     <div className="country-detail">
-      {country && displayCountry(country)}
-      {(error || !country) && (
-        <p className="country-detail-error">
-          Oops, cannot find the country, please try again!
-        </p>
-      )}
+      {(error || !country) && <p className="error">{error}</p>}
+      {isLoading && <h1 className="loading-text">Loading...</h1>}
+      {displayCountryMemo}
     </div>
   )
 }

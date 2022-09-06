@@ -33,6 +33,7 @@
         font-size: 1em;
         color: var(--on-background-secondary);
         cursor: pointer;
+        word-break: keep-all;
         .thead-text {
             margin-right: .4rem;
         }
@@ -80,13 +81,14 @@
 }
 
 .table-head-name .order-list {
+    min-width: 108px;
     .order-text, .order-list-item {
         padding: .5rem 2rem;
     }
 }
 
 .table-head-population .order-list {
-    min-width: 150px;
+    min-width: 140px;
     .order-text, .order-list-item {
         padding: .5rem 1rem;
     }
