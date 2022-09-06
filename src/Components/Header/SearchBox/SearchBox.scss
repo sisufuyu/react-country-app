@@ -12,7 +12,7 @@
         font-size: 1.2rem;
     }
     
-    .searcg-box-input {
+    .search-box-input {
         background-color: transparent;
         outline: none;
         border: none;
@@ -22,6 +22,27 @@
         color: var(--on-primary-container);
         &::placeholder {
             color: var(--on-primary-container);  
+        }
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .search-box {
+        padding: .5rem;
+        .search-icon {
+            font-size: 1rem;
+        }
+        .search-box-input {
+            font-size: 1rem;
+            max-width: 150px;
+        }
+    }
+}
+
+@media screen and (max-width: 576px){
+    .search-box {
+        .search-box-input {
+            max-width: 100px;
         }
     }
 }

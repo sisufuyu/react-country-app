@@ -8,9 +8,16 @@
     @include background-transition;
     background-color: var(--primary);
     color: var(--on-primary);
+    word-break: keep-all;
 
     &:disabled {
         background-color: var(--disabled-background);
         color: var(--disabled-text);
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .add-country-btn {
+        padding: .8rem;
     }
 }

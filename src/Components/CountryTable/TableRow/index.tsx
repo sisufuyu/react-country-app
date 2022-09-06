@@ -36,7 +36,7 @@ export default function TableRow({ country }: { country: Country }) {
         {region}
         <Link to={`/country/${name}`} className="row-link"></Link>
       </td>
-      <td>
+      <td className="country-btn">
         <AddCountryButton name={name} />
       </td>
     </tr>

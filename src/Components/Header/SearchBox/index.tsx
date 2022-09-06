@@ -23,7 +23,7 @@ export default function SearchBox() {
         placeholder="Search..."
         value={keyword}
         onChange={handleChange}
-        className="searcg-box-input"
+        className="search-box-input"
       />
     </div>
   )

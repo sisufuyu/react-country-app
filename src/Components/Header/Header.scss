@@ -28,3 +28,14 @@
         @include flex-center;
     }
 }
+
+@media screen and (max-width: 576px) {
+    .header {
+        .header-left {
+            .header-title {
+                font-size: 1.2rem;
+                margin-right: .5rem;
+            }
+        }
+    }
+}

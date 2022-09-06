@@ -45,3 +45,9 @@ $header-height: 64px;
 .icon {
     font-size: 1.5rem;
 }
+
+@media screen and (max-width: 768px) {
+    .icon {
+        font-size: 1rem;
+    }
+}

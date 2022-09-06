@@ -24,12 +24,12 @@ export function CountryTable() {
     <table className="country-table">
       <thead>
         <tr>
-          <th className="country-table-head">Flag</th>
+          <th className="country-table-head table-head-flag">Flag</th>
           <TableHeadName />
-          <th className="country-table-head">Languages</th>
+          <th className="country-table-head table-head-languages">Languages</th>
           <TableHeadPopulation />
-          <th className="country-table-head">Region</th>
-          <th className="country-table-head"></th>
+          <th className="country-table-head table-head-region">Region</th>
+          <th className="country-table-head table-head-button"></th>
         </tr>
       </thead>
       {tableExist && (

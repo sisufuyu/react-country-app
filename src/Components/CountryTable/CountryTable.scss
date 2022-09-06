@@ -3,6 +3,9 @@
 .country-table {
     margin-top: 2rem;
     width: 100%;
+    word-break: break-word;
+    background-color: var(--background);
+    overflow-x: auto;
 
     tr {
         border-bottom: 1px solid #ccc;
@@ -76,13 +79,13 @@
     }
 }
 
-.table-head-name .order-list{
+.table-head-name .order-list {
     .order-text, .order-list-item {
         padding: .5rem 2rem;
     }
 }
 
-.table-head-population .order-list{
+.table-head-population .order-list {
     min-width: 150px;
     .order-text, .order-list-item {
         padding: .5rem 1rem;
@@ -106,6 +109,15 @@
             &:last-child {
                 margin-bottom: 0;
             }
+        }
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .country-table {
+        td {
+            padding-left: .5rem;
+            padding-right: .5rem;
         }
     }
 }
