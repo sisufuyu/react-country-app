@@ -1,5 +1,44 @@
 @use '../../styles/global.scss' as *;
 
+.table-pagination {
+    width: 100%;
+    @include flex-between;
+    color: var(--on-background);
+    background-color: var(--background);
+    padding: 1rem 0;
+    box-sizing: border-box;
+
+    .page-icon {
+        color: var(--on-background-title);
+        cursor: pointer;
+    }
+
+    .table-pagination-btn {
+        padding: .5rem;
+        border-radius: 5px;
+        border: none;
+        margin: 0 1rem;
+        background-color: var(--on-background-title);
+
+        &:disabled {
+            background-color: var(--disabled-background);
+            .page-icon {
+                color: var(--disabled-text);
+            }
+        }
+
+        .page-icon {
+            color: var(--on-primary);
+        }
+    }
+
+    .table-page-input {
+        border: 1px solid var(--primary);
+        border-radius: 2px;
+        outline: 1px solid var(--primary-outline);
+    }
+}
+
 .country-table {
     margin-top: 2rem;
     width: 100%;

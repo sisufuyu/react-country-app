@@ -63,8 +63,8 @@ export const countrySlice = createSlice({
   reducers: {
     searchCountries: (state, action: PayloadAction<string>) => {
       const keyword = action.payload.toLocaleLowerCase()
-      const list = state.countryList.filter(
-        (country) => country.name.toLocaleLowerCase().indexOf(keyword) !== -1
+      const list = state.countryList.filter((country) =>
+        country.name.toLocaleLowerCase().startsWith(keyword)
       )
       state.filteredList = list
     },

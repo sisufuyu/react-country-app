@@ -14,7 +14,7 @@ export interface UIState {
 
 const initialState: UIState = {
   defaultTheme:
-    (localStorage.getItem('country-app-theme') as Theme) || Theme.Purple,
+    (localStorage.getItem('country-app-theme') as Theme) || Theme.Blue,
 }
 
 export const UISlice = createSlice({

@@ -17,7 +17,7 @@ export default function SearchBox() {
 
   const handleChange = (event: React.FormEvent<HTMLInputElement>) => {
     const target = event.target as HTMLInputElement
-    debounce(() => dispatch(searchCountries(target.value)), 250)
+    debounce(() => dispatch(searchCountries(target.value)), 200)
   }
 
   return (
