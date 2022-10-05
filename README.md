@@ -1,7 +1,7 @@
 # React Country application
 
 ## About The Project
-This is a front-end project I did in Integrify Fullstack Program. In the project I learned and managed to work with React, Redux Toolkit, Thunk, TypeScript, SCSS and got experiences of switching theme via CSS custom properties. This project is deployed on Vercel, go to check 😉 https://react-country-a5auho5nb-sisufuyu.vercel.app/
+This is a front-end project I did in Integrify Fullstack Program. In the project I learned and managed to work with React, Redux Toolkit, Thunk, TypeScript, SCSS and got experiences of switching theme via CSS custom properties. This project is deployed on Vercel, welcome to go check 😉 https://react-country-a5auho5nb-sisufuyu.vercel.app/
 
 ## Features
 1. On the home page there is a table showing countries general information
