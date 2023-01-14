@@ -13,13 +13,18 @@
     z-index: 999;
 
     .header-left {
-        @include flex-around;
+        @include flex-start;
         height: 100%;
         .header-title {
+            @include flex-start;
             margin-right: 1rem;
             font-size: 1.5rem;
             font-weight: bold;
             color: var(--on-primary);
+        }
+        .header-logo {
+            height: 40px;
+            margin-right: .5rem;
         }
     }
 

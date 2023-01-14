@@ -12,6 +12,7 @@ export default function Header() {
       <div className="header-left">
         <Menu />
         <Link to="/" className="header-title">
+          <img src="logo64.png" className="header-logo" />
           Countries
         </Link>
         <SearchBox />
