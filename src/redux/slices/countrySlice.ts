@@ -71,14 +71,10 @@ export const countrySlice = createSlice({
     orderCountriesByName: (state, action: PayloadAction<string>) => {
       const order = action.payload
       const list = [...state.filteredList]
-      if (order === 'asc') {
-        list.sort(function (a, b) {
-          return a.name.localeCompare(b.name)
-        })
-      } else if (order === 'desc') {
-        list.sort(function (a, b) {
-          return a.name.localeCompare(b.name)
-        })
+      list.sort(function (a, b) {
+        return a.name.localeCompare(b.name)
+      })
+      if (order === 'desc') {
         list.reverse()
       }
       state.filteredList = list

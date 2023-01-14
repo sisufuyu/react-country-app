@@ -67,6 +67,7 @@ export function CountryTable() {
         />
         <div>
           <button
+            aria-label="previous page"
             className="table-pagination-btn prev"
             disabled={page === 1 ? true : false}
             onClick={hanldePrevPage}
@@ -84,6 +85,7 @@ export function CountryTable() {
             onChange={changePage}
           />
           <button
+            aria-label="next page"
             className="table-pagination-btn next"
             disabled={page === pages ? true : false}
             onClick={hanldeNextPage}
