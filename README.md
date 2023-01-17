@@ -2,8 +2,9 @@
 
 ## About The Project
 This is a front-end project I did in Integrify Fullstack Program. In the project I learned and managed to work with React, Redux Toolkit, Thunk, TypeScript, SCSS and got experiences of switching theme via CSS custom properties. This project is deployed on Netlify, welcome to go check https://yufu-country.netlify.app 😉. I also package it and push it to Docker Hub, feel free to pull it and try in your local environment 
+
 ```
-sisufuyu/country-react-app
+docker image pull sisufuyu/country-react-app
 ```
 
 ## Features
