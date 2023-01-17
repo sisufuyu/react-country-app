@@ -12,7 +12,10 @@ export default function Header() {
       <div className="header-left">
         <Menu />
         <Link to="/" className="header-title">
-          <img src="logo64.png" className="header-logo" />
+          <img
+            src={process.env.PUBLIC_URL + '/logo64.png'}
+            className="header-logo"
+          />
           Countries
         </Link>
         <SearchBox />
